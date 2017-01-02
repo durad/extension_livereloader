@@ -68,15 +68,24 @@ function onMessage(messages) {
 	var message = messages[0];
 	if (message.command !== 'reload') return;
 
+	var sendReloadMessage = function() {
+		var request = {
+			type: 'reload',
+			log: { text: 'Reload', time: Date.now() }
+		};
+
+		chrome.runtime.sendMessage(request, function(response) {});
+	};
+
 	chrome.management.setEnabled(extensionId, false, function() {
 		chrome.management.setEnabled(extensionId, true, function() {
-			var request = {
-				type: 'reload',
-				log: { text: 'Reload', time: Date.now() }
-			};
+			sendReloadMessage();
 
-			chrome.runtime.sendMessage(request, function(response) {});
+			if (isReloadingTab) {
+				chrome.tabs.reload(tabId);
+			}
 		});
+
 	});
 }
 
