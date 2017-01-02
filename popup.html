@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="padded">
+		<div class="section server">
+			<div>
+				<div class="title">Livereload server</div>
+			</div>
+			<div class="clear10"></div>
+
+			<select class="protocol" data-bind="value: urlType, enable: currentState() == 'disconnected'">
+				<option>ws</option>
+				<option>wss</option>
+			</select>
+			<span>://</span>
+			<input type="text" class="server-url" data-bind="value: url, enable: currentState() == 'disconnected'" />
+		</div>
+
+		<div class="section extension">
+			<div class="title">Extension</div>
+			<div class="clear10"></div>
+			<select class="extensions" data-bind="options: extensions, optionsValue: 'id', optionsText: 'name', value: extensionId, enable: currentState() == 'disconnected'"></select>
+		</div>
+
+		<div class="section page">
+			<div class="title">Page reload</div>
+			<div class="clear10"></div>
+			<label>
+				<input class="chk-reload-tab" type="checkbox" data-bind="checked: isReloadingTab, enable: currentState() == 'disconnected'" />
+				Reload following tab
+			</label>
+			<div class="clear10"></div>
+			<select class="tabs" disabled="disabled" data-bind="enable: currentState() == 'disconnected' && isReloadingTab(), options: tabs, optionsValue: 'id', optionsText: 'title', value: tabId, optionsCaption: tabCaption()"></select>
+		</div>
+
+		<div class="section connect">
+			<button class="connect" class="connect" data-bind="click: onConnectClicked, visible: currentState() == 'disconnected'">Connect</button>
+			<button class="connect" class="connect" data-bind="click: onDisconnectClicked, visible: currentState() != 'disconnected'">Disconnect</button>
+		</div>
+	</div>
+
+	<div class="" data-bind="visible: !isShowingLog(), attr: { class: 'section current-state ' + currentState() }">
+		<div class="state" data-bind="text: currentStateText()"></div>
+		<a class="show-log" href="#" data-bind="click: function() { isShowingLog(true); }">log</a>
+		<div class="clear"></div>
+	</div>
+
+	<!-- ko if: isShowingLog() -->
+		<div class="padded log">
+			<div class="log-container" data-bind="scrollToBottom: {}, foreach: logLines()">
+				<div class="log-entry">
+					<div class="time" data-bind="text: moment(time).format('HH:mm')"></div>
+					<div class="text" data-bind="text: text"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	<!-- /ko -->
+
+	<script src="jquery.js"></script>
+	<script src="knockout.js"></script>
+	<script src="underscore.js"></script>
+	<script src="humanize.js"></script>
+	<script src="moment.js"></script>
+	<script src="popup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
+body {
+	width: 300px;
+}
+
+select {
+	height: 26px;
+}
+
+input[type="text"] {
+	height: 20px;
+	line-height: 20px;
+	/*border-width: 2px;*/
+	padding: 0px;
+	padding: 1px 3px;
+}
+
+.clear {
+	clear: both;
+}
+
+.clear10 {
+	clear: both;
+	height: 10px;
+}
+
+.padded {
+	padding: 10px;
+}
+
+.section {
+	margin-top: 10px;
+}
+
+.section:first-child {
+	margin-top: 0px;
+}
+
+.section .title {
+	/*display: none;*/
+	padding-top: 10px;
+	border-bottom: 1px dotted #ccc;
+}
+
+.protocol {
+	width: 50px;
+}
+
+.server-url {
+	width: 190px;
+}
+
+select, option {
+	width: 250px;
+}
+
+.section.connect {
+	margin-top: 20px;
+}
+
+.section.current-state {
+	padding: 5px 8px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background-color: #eee;
+}
+
+.section.current-state.connecting {
+	background-color: #ffc;
+}
+
+.section.current-state.connected {
+	background-color: #cfc;
+}
+
+.section.current-state .state {
+	font-weight: bold;
+	float: left;
+}
+
+.section.current-state .show-log {
+	float: right;
+}
+
+.section.log .title {
+	color: #aaa;
+	border-bottom: 0px;
+}
+
+.log-container {
+	height: 120px;
+	border: 1px solid #ddd;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.log-container .log-entry {
+	padding: 3px 5px;
+}
+
+.log-container .log-entry:nth-child(odd) {
+	background-color: #fafafa;
+}
+
+.log-container .log-entry .time {
+	float: left;
+	width: 38px;
+}
+
+.log-container .log-entry .text {
+	float: left;
+	width: 200px;
+	margin-right: 5px;
+}

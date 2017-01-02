@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Extension Livereload",
+  "description": "Livereload client for Chrome extensions. Reloads unpacked extensions and optionally selected tabs.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": {
+      "19": "icon2_19.png",
+      "38": "icon_38.png"
+    },
+
+    "default_popup": "popup.html"
+  },
+
+  "background": { "scripts": ["livereload.js", "underscore.js", "background.js"] },
+
+  "permissions": ["management", "tabs", "webRequest", "file://localhost/reload*"],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+
+}
